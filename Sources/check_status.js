@@ -1,4 +1,3 @@
-const slack = require("./slack.js");
 const discord = require("./discord.js");
 const exec = require("child_process").exec;
 const dirty = require("dirty");
@@ -40,7 +39,6 @@ const checkVersion = async (app) => {
     if (!lastAppInfo || lastAppInfo.status != app.status) {
       console.log("[*] status is different");
 
-      slack.post(app, db.get(submissionStartKey));
       discord.post(app, db.get(submissionStartKey));
 
       if (app.status == "Waiting For Review") {
